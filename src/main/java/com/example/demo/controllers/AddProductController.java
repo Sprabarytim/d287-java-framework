@@ -173,4 +173,27 @@ public class AddProductController {
         theModel.addAttribute("availparts",availParts);
         return "productForm";
     }
+    @GetMapping("/buyFlashlight")
+    public String buyFlashlight(@RequestParam("productID") int theId, Model theModel){
+        //initialize the flashlight
+        ProductService productService = context.getBean(ProductServiceImpl.class);
+        //creating product object called flashlight
+        Product Flashlights = productService.findById(theId);
+        //creating a variable to store the value of inventory
+        int inv = Flashlights.getInv();
+
+        //checkin to see in inventory is 0
+        if(inv == 0)
+        {
+            return "fail.html";
+        }
+        else{
+            Flashlights.setInv(Flashlights.getInv()-1);
+            productService.save(Flashlights);
+            return "success.html";
+        }
+    }
+
+
+
 }

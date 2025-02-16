@@ -154,3 +154,32 @@ E.  BootStrapData.java  changed lines 42-151, added parts and products to invent
         magneticLight.setId(11);
 
         productRepository.save(magneticLight);
+
+        Part D.  Added "Buy Now" button to mainscreen.html line 87
+
+        <a th:href="@{/buyFlashlight(productID=${tempProduct.id})}" class="btn btn-primary btn-sm mb-3">Buy Now</a>
+
+        Mapped button to decrement inventory of product by one and added display message for failure or success of buying on Addproductcontroller
+         lines 176-194
+
+         @GetMapping("/buyFlashlight")
+             public String buyFlashlight(@RequestParam("productID") int theId, Model theModel){
+                 //initialize the flashlight
+                 ProductService productService = context.getBean(ProductServiceImpl.class);
+                 //creating product object called flashlight
+                 Product Flashlights = productService.findById(theId);
+                 //creating a variable to store the value of inventory
+                 int inv = Flashlights.getInv();
+
+                 //checkin to see in inventory is 0
+                 if(inv == 0)
+                 {
+                     return "fail.html";
+                 }
+                 else{
+                     Flashlights.setInv(Flashlights.getInv()-1);
+                     productService.save(Flashlights);
+                     return "success.html";
+                 }
+
+
