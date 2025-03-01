@@ -183,3 +183,35 @@ F.  BootStrapData.java  changed lines 42-151, added parts and products to invent
                  }
 
 
+step G.     update Part.java lines 31-34 and 89-100 with min and max getters and setters
+     @Min(value = 0, message = "Min Inventory value must be positive")
+        int minInv;
+        @Min(value = 0, message = "Max Inventory value must be positive")
+        int maxInv;
+
+        public int getMinInv(){
+                return minInv;
+            }
+            public void setMinInv(int minInv){
+                this.minInv = minInv;
+            }
+            public int getMaxInv(){
+                return maxInv;
+            }
+            public void setMaxInv(int maxInv){
+                this.maxInv = maxInv;
+            }
+
+      updated Mainscreen.html to added feilds for min and max on ines 40-41 and 50-51
+                   <th>Min Inventory</th>
+                  <th>Max Inventory</th>
+                   <td th:text="${tempPart.minInv}">1</td>
+                   <td th:text="${tempPart.maxInv}">1</td>
+      updated bootstrapData.java to add min and max values on line 49-50, 61-62, 73-74, 86-87, 98-99, 110-111
+
+      application.properties changed database name line 6
+
+      inhousepartform.html changed line 23-28 to add min and max
+
+      outsourcedpartform.html changed line 24-31 to add min and max
+

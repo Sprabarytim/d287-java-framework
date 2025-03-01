@@ -46,6 +46,8 @@ public class BootStrapData implements CommandLineRunner {
         largeBattery.setInv(15);
         largeBattery.setPrice(2.50);
         largeBattery.setId(1);
+        largeBattery.setMinInv(1);
+        largeBattery.setMaxInv(20);
 
         partRepository.save(largeBattery);
 
@@ -56,6 +58,8 @@ public class BootStrapData implements CommandLineRunner {
         smallBattery.setInv(15);
         smallBattery.setPrice(1.25);
         smallBattery.setId(2);
+        smallBattery.setMinInv(1);
+        smallBattery.setMaxInv(20);
 
         partRepository.save(smallBattery);
 
@@ -66,17 +70,21 @@ public class BootStrapData implements CommandLineRunner {
         mediumBattery.setInv(15);
         mediumBattery.setPrice(1.75);
         mediumBattery.setId(3);
+        mediumBattery.setMinInv(1);
+        mediumBattery.setMaxInv(20);
 
 
         partRepository.save(mediumBattery);
 
-        //creating small buln and setting values
+        //creating small bulb and setting values
 
         Part smallBulb = new Part();
         smallBulb.setName("Small Bulb");
         smallBulb.setInv(15);
         smallBulb.setPrice(.75);
         smallBulb.setId(4);
+        smallBulb.setMinInv(1);
+        smallBulb.setMaxInv(20);
 
         partRepository.save(smallBulb);
 
@@ -87,6 +95,8 @@ public class BootStrapData implements CommandLineRunner {
         mediumBulb.setInv(15);
         mediumBulb.setPrice(1.25);
         mediumBulb.setId(5);
+        mediumBulb.setMinInv(1);
+        mediumBulb.setMaxInv(20);
 
         partRepository.save(mediumBulb);
 
@@ -97,6 +107,8 @@ public class BootStrapData implements CommandLineRunner {
         largeBulb.setInv(15);
         largeBulb.setPrice(2.00);
         largeBulb.setId(6);
+        largeBulb.setMinInv(1);
+        largeBulb.setMaxInv(20);
 
         partRepository.save(largeBulb);
 
@@ -105,7 +117,7 @@ public class BootStrapData implements CommandLineRunner {
         Product largeFlashlight = new Product();
         largeFlashlight.setName("Large Flashlight");
         largeFlashlight.setInv(15);
-        largeFlashlight.setPrice(12.00);
+        largeFlashlight.setPrice(25.00);
         largeFlashlight.setId(7);
 
         productRepository.save(largeFlashlight);
