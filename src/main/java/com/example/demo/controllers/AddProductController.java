@@ -173,7 +173,7 @@ public class AddProductController {
         theModel.addAttribute("availparts",availParts);
         return "productForm";
     }
-    @GetMapping("/buyFlashlight")
+   @GetMapping("/buyFlashlight")
     public String buyFlashlight(@RequestParam("productID") int theId, Model theModel){
         //initialize the flashlight
         ProductService productService = context.getBean(ProductServiceImpl.class);
@@ -187,7 +187,8 @@ public class AddProductController {
         {
             return "fail.html";
         }
-        else{
+        else
+        {
             Flashlights.setInv(Flashlights.getInv()-1);
             productService.save(Flashlights);
             return "success.html";
