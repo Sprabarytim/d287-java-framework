@@ -75,6 +75,7 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Price</th>
             <th>Inventory</th>
@@ -83,6 +84,8 @@
         </thead>
         <tbody>
         <tr th:each="tempProduct : ${products}">
+
+            <td th:text="${tempProduct.id}">1</td>
             <td th:text="${tempProduct.name}">1</td>
             <td th:text="${tempProduct.price}">1</td>
             <td th:text="${tempProduct.inv}">1</td>

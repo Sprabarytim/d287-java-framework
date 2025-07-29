@@ -1,8 +1,10 @@
 package com.example.demo.bootstrap;
 
+import com.example.demo.domain.InhousePart;
 import com.example.demo.domain.OutsourcedPart;
 import com.example.demo.domain.Part;
 import com.example.demo.domain.Product;
+import com.example.demo.repositories.InhousePartRepository;
 import com.example.demo.repositories.OutsourcedPartRepository;
 import com.example.demo.repositories.PartRepository;
 import com.example.demo.repositories.ProductRepository;
@@ -29,140 +31,147 @@ public class BootStrapData implements CommandLineRunner {
     private final ProductRepository productRepository;
 
     private final OutsourcedPartRepository outsourcedPartRepository;
+    private final InhousePartRepository inhousePartRepository;
 
-    public BootStrapData(PartRepository partRepository, ProductRepository productRepository, OutsourcedPartRepository outsourcedPartRepository) {
+    public BootStrapData(PartRepository partRepository, ProductRepository productRepository, OutsourcedPartRepository outsourcedPartRepository, InhousePartRepository inhousePartRepository) {
         this.partRepository = partRepository;
         this.productRepository = productRepository;
         this.outsourcedPartRepository=outsourcedPartRepository;
+        this.inhousePartRepository = inhousePartRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        //creating large battery and setting values
 
-        Part largeBattery = new Part();
-        largeBattery.setName("Large Battery");
-        largeBattery.setInv(15);
-        largeBattery.setPrice(2.50);
-        largeBattery.setId(1);
-        largeBattery.setMinInv(1);
-        largeBattery.setMaxInv(20);
+        if(inhousePartRepository.count() == 0) {
+            //creating large battery and setting values
 
-        partRepository.save(largeBattery);
+            InhousePart largeBattery = new InhousePart();
+            largeBattery.setName("Large Battery");
+            largeBattery.setInv(15);
+            largeBattery.setPrice(2.50);
+            largeBattery.setId(1);
+            largeBattery.setMinInv(1);
+            largeBattery.setMaxInv(20);
 
-        //creating small battery and setting values
+            inhousePartRepository.save(largeBattery);
 
-        Part smallBattery = new Part();
-        smallBattery.setName("Small Battery");
-        smallBattery.setInv(15);
-        smallBattery.setPrice(1.25);
-        smallBattery.setId(2);
-        smallBattery.setMinInv(1);
-        smallBattery.setMaxInv(20);
+            //creating small battery and setting values
 
-        partRepository.save(smallBattery);
+            InhousePart smallBattery = new InhousePart();
+            smallBattery.setName("Small Battery");
+            smallBattery.setInv(15);
+            smallBattery.setPrice(1.25);
+            smallBattery.setId(2);
+            smallBattery.setMinInv(1);
+            smallBattery.setMaxInv(20);
 
-        //creating medium battery and setting values
+            inhousePartRepository.save(smallBattery);
 
-        Part mediumBattery = new Part();
-        mediumBattery.setName("Medium Battery");
-        mediumBattery.setInv(15);
-        mediumBattery.setPrice(1.75);
-        mediumBattery.setId(3);
-        mediumBattery.setMinInv(1);
-        mediumBattery.setMaxInv(20);
+            //creating medium battery and setting values
 
-
-        partRepository.save(mediumBattery);
-
-        //creating small bulb and setting values
-
-        Part smallBulb = new Part();
-        smallBulb.setName("Small Bulb");
-        smallBulb.setInv(15);
-        smallBulb.setPrice(.75);
-        smallBulb.setId(4);
-        smallBulb.setMinInv(1);
-        smallBulb.setMaxInv(20);
-
-        partRepository.save(smallBulb);
-
-        //creating medium bulb and setting values
-
-        Part mediumBulb = new Part();
-        mediumBulb.setName("Medium Bulb");
-        mediumBulb.setInv(15);
-        mediumBulb.setPrice(1.25);
-        mediumBulb.setId(5);
-        mediumBulb.setMinInv(1);
-        mediumBulb.setMaxInv(20);
-
-        partRepository.save(mediumBulb);
-
-        //creating large bulb and setting values
-
-        Part largeBulb = new Part();
-        largeBulb.setName("Large Bulb");
-        largeBulb.setInv(15);
-        largeBulb.setPrice(2.00);
-        largeBulb.setId(6);
-        largeBulb.setMinInv(1);
-        largeBulb.setMaxInv(20);
-
-        partRepository.save(largeBulb);
-
-        //creating large flashlight and setting values
-
-        Product largeFlashlight = new Product();
-        largeFlashlight.setName("Large Flashlight");
-        largeFlashlight.setInv(15);
-        largeFlashlight.setPrice(25.00);
-        largeFlashlight.setId(7);
-
-        productRepository.save(largeFlashlight);
-
-        //creating medium flashlight and setting values
-
-        Product mediumFlashlight = new Product();
-        mediumFlashlight.setName("Medium Flashlight");
-        mediumFlashlight.setInv(15);
-        mediumFlashlight.setPrice(10.25);
-        mediumFlashlight.setId(8);
-
-        productRepository.save(mediumFlashlight);
-
-        //creating small flashlight and setting values
-
-        Product smallFlastlight = new Product();
-        smallFlastlight.setName("Small Flastlight");
-        smallFlastlight.setInv(15);
-        smallFlastlight.setPrice(8.75);
-        smallFlastlight.setId(9);
-
-        productRepository.save(smallFlastlight);
-
-        //creating flood light and setting values
-
-        Product floodLight = new Product();
-        floodLight.setName("Flood Light");
-        floodLight.setInv(15);
-        floodLight.setPrice(25.75);
-        floodLight.setId(10);
-
-        productRepository.save(floodLight);
-
-        //creating magnetic light and setting values
-
-        Product magneticLight = new Product();
-        magneticLight.setName("Magnetic Light");
-        magneticLight.setInv(15);
-        magneticLight.setPrice(15.25);
-        magneticLight.setId(11);
-
-        productRepository.save(magneticLight);
+            InhousePart mediumBattery = new InhousePart();
+            mediumBattery.setName("Medium Battery");
+            mediumBattery.setInv(15);
+            mediumBattery.setPrice(1.75);
+            mediumBattery.setId(3);
+            mediumBattery.setMinInv(1);
+            mediumBattery.setMaxInv(20);
 
 
+            inhousePartRepository.save(mediumBattery);
+
+            //creating small bulb and setting values
+
+            InhousePart smallBulb = new InhousePart();
+            smallBulb.setName("Small Bulb");
+            smallBulb.setInv(15);
+            smallBulb.setPrice(.75);
+            smallBulb.setId(4);
+            smallBulb.setMinInv(1);
+            smallBulb.setMaxInv(20);
+
+            inhousePartRepository.save(smallBulb);
+
+            //creating medium bulb and setting values
+
+            InhousePart mediumBulb = new InhousePart();
+            mediumBulb.setName("Medium Bulb");
+            mediumBulb.setInv(15);
+            mediumBulb.setPrice(1.25);
+            mediumBulb.setId(5);
+            mediumBulb.setMinInv(1);
+            mediumBulb.setMaxInv(20);
+
+            inhousePartRepository.save(mediumBulb);;
+
+            //creating large bulb and setting values
+
+            InhousePart largeBulb = new InhousePart();
+            largeBulb.setName("Large Bulb");
+            largeBulb.setInv(15);
+            largeBulb.setPrice(2.00);
+            largeBulb.setId(6);
+            largeBulb.setMinInv(1);
+            largeBulb.setMaxInv(20);
+
+            inhousePartRepository.save(largeBulb);
+        };
+
+        if(productRepository.count() == 0) {
+
+            //creating large flashlight and setting values
+
+            Product largeFlashlight = new Product();
+            largeFlashlight.setName("Large Flashlight");
+            largeFlashlight.setInv(15);
+            largeFlashlight.setPrice(25.00);
+            largeFlashlight.setId(7);
+
+            productRepository.save(largeFlashlight);
+
+            //creating medium flashlight and setting values
+
+            Product mediumFlashlight = new Product();
+            mediumFlashlight.setName("Medium Flashlight");
+            mediumFlashlight.setInv(15);
+            mediumFlashlight.setPrice(10.25);
+            mediumFlashlight.setId(8);
+
+            productRepository.save(mediumFlashlight);
+
+            //creating small flashlight and setting values
+
+            Product smallFlastlight = new Product();
+            smallFlastlight.setName("Small Flastlight");
+            smallFlastlight.setInv(15);
+            smallFlastlight.setPrice(8.75);
+            smallFlastlight.setId(9);
+
+            productRepository.save(smallFlastlight);
+
+            //creating flood light and setting values
+
+            Product floodLight = new Product();
+            floodLight.setName("Flood Light");
+            floodLight.setInv(15);
+            floodLight.setPrice(25.75);
+            floodLight.setId(10);
+
+            productRepository.save(floodLight);
+
+            //creating magnetic light and setting values
+
+            Product magneticLight = new Product();
+            magneticLight.setName("Magnetic Light");
+            magneticLight.setInv(15);
+            magneticLight.setPrice(15.25);
+            magneticLight.setId(11);
+
+            productRepository.save(magneticLight);
+
+        };
 
 
        /*
