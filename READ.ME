@@ -253,7 +253,49 @@ G.     update Part.java lines 31-34 and 89-100 with min and max getters and sett
 
       application.properties changed database name line 6
 
+      created Validator "InventoryValidator" Added lines 19-27
+      public class InventoryValidator implements ConstraintValidator<ValidInventory, Part> {
+          @Autowired
+          private ApplicationContext context;
+          public static ApplicationContext myContext;
+
+          @Override
+          public void initialize(ValidInventory constraintAnnotation) {
+              // ConstraintValidator.super.initialize(constraintAnnotation);
+          }
+
+
+          @Override
+          public boolean isValid(Part product, ConstraintValidatorContext constraintValidatorContext) {
+
+
+              if(product.getInv() > product.getMaxInv()) {
+
+                  constraintValidatorContext.buildConstraintViolationWithTemplate("solution: Fix your Inventory, it is greater than the max inventory").addConstraintViolation();
+                  return false;
+              }
+
+                  if(product.getInv() < product.getMinInv()) {
+
+                      constraintValidatorContext.buildConstraintViolationWithTemplate("Solution: Fix your Inventory, it is less than the min inventory").addConstraintViolation();
+                      return false;
+                  }
+
+              return true;
+          }
+
+      created interface Valid Inventory  changed line 20
+      String message() default "Inventory Error";
+
       inhousepartform.html changed line 23-28 to add min and max
+      added line 32-38
+      <div th:if="${#fields.hasAnyErrors()}">
+                               <ul>
+                                   <li th:each="err: ${#fields.allErrors()}" th:text="${err}">
+
+                                   </li>
+                               </ul>
+                           </div>
 
       outsourcedpartform.html changed line 24-31 to add min and max
 

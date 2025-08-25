@@ -25,6 +25,11 @@ public class EnufPartsValidator implements ConstraintValidator<ValidEnufParts, P
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
+
+    public boolean isValid(Part part, ConstraintValidatorContext constraintValidatorContext) {
+        return part.getInv() > part.getMinInv();
+    }
+
     @Override
     public boolean isValid(Product product, ConstraintValidatorContext constraintValidatorContext) {
         if(context==null) return true;

@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import com.example.demo.domain.InhousePart;
 import com.example.demo.domain.Part;
+import com.example.demo.repositories.InhousePartRepository;
+import com.example.demo.repositories.PartRepository;
 import com.example.demo.service.InhousePartService;
 import com.example.demo.service.InhousePartServiceImpl;
 import com.example.demo.service.PartService;
@@ -28,6 +30,10 @@ import javax.validation.Valid;
 public class AddInhousePartController{
     @Autowired
     private ApplicationContext context;
+    @Autowired
+    private PartRepository partRepository;
+    @Autowired
+    private InhousePartRepository inhousePartRepository;
 
     @GetMapping("/showFormAddInPart")
     public String showFormAddInhousePart(Model theModel){
@@ -46,9 +52,10 @@ public class AddInhousePartController{
         InhousePartService repo=context.getBean(InhousePartServiceImpl.class);
         InhousePart ip=repo.findById((int)part.getId());
         if(ip!=null)part.setProducts(ip.getProducts());
-            repo.save(part);
+        repo.save(part);
 
         return "confirmationaddpart";}
+
     }
 
 }
