@@ -299,3 +299,17 @@ G.     update Part.java lines 31-34 and 89-100 with min and max getters and sett
 
       outsourcedpartform.html changed line 24-31 to add min and max
 
+ H.
+ Added lines 43-44 to enufpartsvalidator.java
+  constraintValidatorContext.buildConstraintViolationWithTemplate("Solution: Fix your Inventory, it is greater than the max inventory").addConstraintViolation();
+                 return false;
+
+      Added lines 33-39 to OutsourcedPartForm.html
+
+    <div th:if="${#fields.hasAnyErrors()}">
+        <ul>
+            <li th:each="err: ${#fields.allErrors()}" th:text="${err}">
+
+            </li>
+        </ul>
+    </div>

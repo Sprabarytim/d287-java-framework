@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import com.example.demo.validators.ValidDeletePart;
+import com.example.demo.validators.ValidEnufParts;
 import com.example.demo.validators.ValidInventory;
 
 import javax.persistence.*;

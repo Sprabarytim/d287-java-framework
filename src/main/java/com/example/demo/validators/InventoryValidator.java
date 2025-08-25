@@ -33,7 +33,7 @@ public class InventoryValidator implements ConstraintValidator<ValidInventory, P
 
         if(product.getInv() > product.getMaxInv()) {
 
-            constraintValidatorContext.buildConstraintViolationWithTemplate("solution: Fix your Inventory, it is greater than the max inventory").addConstraintViolation();
+            constraintValidatorContext.buildConstraintViolationWithTemplate("Solution: Fix your Inventory, it is greater than the max inventory").addConstraintViolation();
             return false;
         }
 
