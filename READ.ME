@@ -313,3 +313,41 @@ G.     update Part.java lines 31-34 and 89-100 with min and max getters and sett
             </li>
         </ul>
     </div>
+
+  I.
+  Added unit tests to PartTest.java lines 160-193
+
+  @Test
+      void getMinInv(){
+          int minInv=1;
+          partIn.setMinInv(minInv);
+          assertEquals(minInv,partIn.getMinInv());
+          partOut.setMinInv(minInv);
+          assertEquals(minInv,partOut.getMinInv());
+      }
+      @Test
+      void setMinInv() {
+          int minInv = 1;
+          partIn.setMinInv(minInv);
+          assertEquals(minInv, partIn.getMinInv());
+          partOut.setMinInv(minInv);
+          assertEquals(minInv, partOut.getMinInv());
+      }
+
+      @Test
+      void getMaxInv(){
+          int maxInv=100;
+          partIn.setMaxInv(maxInv);
+          assertEquals(maxInv,partIn.getMaxInv());
+          partOut.setMaxInv(maxInv);
+          assertEquals(maxInv,partOut.getMaxInv());
+      }
+
+      @Test
+      void setMaxInv(){
+          int maxInv=100;
+          partIn.setMaxInv(maxInv);
+          assertEquals(maxInv,partIn.getMaxInv());
+          partOut.setMaxInv(maxInv);
+          assertEquals(maxInv,partOut.getMaxInv());
+      }
